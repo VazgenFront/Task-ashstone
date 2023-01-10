@@ -21,6 +21,8 @@ prod__dist/
 # Package files
 *.jar
 
+*.zip
+
 # Maven
 target/
 dist/
