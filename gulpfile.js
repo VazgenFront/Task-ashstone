@@ -1,7 +1,6 @@
 import gulp from "gulp";
 import { path } from "./gulp/config/path.js";
 import { plugins } from "./gulp/config/plugins.js";
-import { copy } from "./gulp/tasks/copy.js";
 import { reset } from "./gulp/tasks/reset.js";
 import { html } from "./gulp/tasks/html.js";
 import { server } from "./gulp/tasks/server.js";
@@ -19,14 +18,13 @@ global.app = {
 };
 
 function watcher() {
-  gulp.watch(path.watch.files, copy);
   gulp.watch(path.watch.html, html);
   gulp.watch(path.watch.scss, scss);
   gulp.watch(path.watch.js, js);
   gulp.watch(path.watch.images, images);
 }
 
-const mainTasks = gulp.parallel(copy, html, scss, js, images);
+const mainTasks = gulp.parallel(html, scss, js, images);
 const runServer = gulp.parallel(watcher, server);
 
 const dev = gulp.series(reset, mainTasks, runServer);
